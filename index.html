@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#efeae1" />
+    <title>Decla's Downton SF food picks</title>
+    <meta name="description" content="Decla's Downton SF food picks. Draws a cuisine, then a restaurant, and opens Uber Eats." />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,640&family=Outfit:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #efeae1;
+        --ink: #1c1916;
+        --muted: #5f584f;
+        --line: #ddd4c6;
+        --red: #c83c2b;
+        --red-dark: #a33123;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Outfit, "Avenir Next", "Segoe UI", sans-serif;
+        font-size: 17px;
+        line-height: 1.45;
+      }
+
+      .wrap {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 9vh 24px 72px;
+      }
+
+      .title {
+        margin: 0;
+        max-width: 11em;
+        font-family: Fraunces, Georgia, "Times New Roman", serif;
+        font-size: clamp(32px, 5vw, 44px);
+        font-weight: 560;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+      }
+
+      .title::after {
+        content: "";
+        display: block;
+        width: 2.4rem;
+        height: 2px;
+        margin-top: 12px;
+        background: var(--red);
+      }
+
+      #place {
+        margin: 28px 0 12px;
+        font-family: Fraunces, Georgia, "Times New Roman", serif;
+        font-weight: 560;
+        font-size: clamp(52px, 11vw, 96px);
+        letter-spacing: -0.04em;
+        line-height: 0.9;
+      }
+
+      #place[data-long="true"] {
+        font-size: clamp(36px, 7vw, 64px);
+        line-height: 0.96;
+      }
+
+      .is-spinning #place {
+        opacity: 0.4;
+      }
+
+      .meta,
+      .also,
+      .hint,
+      .history {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .also {
+        margin-top: 10px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 26px;
+      }
+
+      button,
+      .order {
+        font: inherit;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 999px;
+        padding: 12px 18px;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      #draw {
+        background: var(--red);
+        color: #fff;
+        border: 0;
+      }
+
+      #draw:hover {
+        background: var(--red-dark);
+      }
+
+      #draw:disabled {
+        cursor: progress;
+        opacity: 0.6;
+      }
+
+      .order {
+        display: inline-flex;
+        align-items: center;
+        color: var(--ink);
+        background: transparent;
+        border: 1px solid var(--ink);
+      }
+
+      .order:hover {
+        background: #fff;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--red);
+        outline-offset: 3px;
+      }
+
+      .history {
+        min-height: 1.4em;
+        margin-top: 22px;
+        font-size: 15px;
+      }
+
+      .board {
+        margin-top: 64px;
+      }
+
+      .board h2,
+      .group h3 {
+        margin: 0;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .hint {
+        margin-top: 8px;
+        max-width: 38rem;
+      }
+
+      .group {
+        display: grid;
+        grid-template-columns: 9.5rem 1fr;
+        gap: 8px 20px;
+        padding: 14px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .group p,
+      #occasional {
+        margin: 0;
+      }
+
+      .extra {
+        margin-top: 36px;
+      }
+
+      #occasional {
+        margin-top: 12px;
+        padding-top: 14px;
+        border-top: 1px solid var(--line);
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      @media (max-width: 640px) {
+        .wrap {
+          padding-top: 48px;
+        }
+
+        .group {
+          grid-template-columns: 1fr;
+          gap: 4px;
+        }
+
+        .actions {
+          display: grid;
+        }
+
+        button,
+        .order {
+          justify-content: center;
+          text-align: center;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .is-spinning #place {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <main>
+        <h1 class="title">Decla's Downton SF food picks</h1>
+        <div id="result">
+          <p id="place">What's lunch?</p>
+          <p id="meta" class="meta">Draws a cuisine, then a restaurant.</p>
+          <p id="also" class="also" hidden></p>
+        </div>
+        <div class="actions">
+          <button type="button" id="draw">Draw</button>
+          <a id="order" class="order" hidden target="_blank" rel="noopener noreferrer">Order on Uber Eats</a>
+        </div>
+        <p id="history" class="history"></p>
+        <p id="status" class="sr-only" aria-live="polite"></p>
+      </main>
+      <section class="board" aria-labelledby="board-title">
+        <h2 id="board-title">The list</h2>
+        <p class="hint">Regular cuisines are an even draw. Then one restaurant from that list.</p>
+        <div id="regular"></div>
+        <div class="extra">
+          <h2>Less often</h2>
+          <p class="hint">No fixed restaurant. The draw picks the cuisine and opens Uber Eats.</p>
+          <p id="occasional"></p>
+        </div>
+      </section>
+    </div>
+    <script src="picker.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
