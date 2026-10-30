@@ -1,0 +1,50 @@
+{
+  "regular": [
+    {
+      "cuisine": "Healthy",
+      "restaurants": ["Mendocino Farms", "Tender Greens", "Sweetgreen", "Mixt"]
+    },
+    {
+      "cuisine": "Mexican",
+      "restaurants": ["Chipotle", "Suavecito", "El Toro Taqueria"]
+    },
+    {
+      "cuisine": "Indian",
+      "restaurants": ["Chaat Corner", "Curry Up Now"]
+    },
+    {
+      "cuisine": "Mediterranean",
+      "restaurants": [
+        "Hummus Mediterranean Kitchen",
+        { "name": "Sumac", "uberEatsSearch": "Sumac Mediterranean San Francisco" }
+      ]
+    },
+    {
+      "cuisine": "Italian",
+      "restaurants": [
+        "Pink Onion",
+        { "name": "Little Original Joe's", "uberEatsSearch": "Little Original Joe's Marina San Francisco" }
+      ]
+    },
+    {
+      "cuisine": "Sandwiches",
+      "restaurants": [
+        { "name": "Ike's", "uberEatsSearch": "Ike's Love and Sandwiches San Francisco" },
+        "Starbird"
+      ]
+    },
+    {
+      "cuisine": "Vietnamese",
+      "restaurants": ["Freshroll"]
+    },
+    {
+      "cuisine": "Korean",
+      "restaurants": ["Purple Rice"]
+    },
+    {
+      "cuisine": "Thai",
+      "restaurants": [{ "name": "Lers Ros", "uberEatsSearch": "Lers Ros Thai San Francisco" }]
+    }
+  ],
+  "occasional": ["Ethiopian", "Japanese", "Chinese", "Burgers", "Pizza", "Peruvian", "Seafood"]
+}

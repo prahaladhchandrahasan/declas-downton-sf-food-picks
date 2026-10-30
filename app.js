@@ -1,5 +1,4 @@
 (function () {
-  const picker = globalThis.LunchPicker;
   const placeEl = document.querySelector("#place");
   const metaEl = document.querySelector("#meta");
   const alsoEl = document.querySelector("#also");
@@ -40,6 +39,7 @@
 
   let state = loadState();
   let spinning = false;
+  let picker = null;
 
   function save() {
     try {
@@ -149,7 +149,7 @@
   }
 
   async function draw() {
-    if (spinning) return;
+    if (spinning || !picker) return;
     spinning = true;
     drawBtn.disabled = true;
     drawBtn.textContent = "Drawing";
@@ -175,7 +175,24 @@
     void draw();
   });
 
-  renderBoard();
-  renderHistory();
-  if (state.history[0]) renderChoice(state.history[0], true);
+  function showLoadError() {
+    metaEl.textContent = "The restaurant list failed to load.";
+    drawBtn.disabled = true;
+  }
+
+  drawBtn.disabled = true;
+
+  fetch("restaurants.json")
+    .then((response) => {
+      if (!response.ok) throw new Error("restaurants.json");
+      return response.json();
+    })
+    .then((data) => {
+      picker = globalThis.LunchPicker.create(data);
+      renderBoard();
+      renderHistory();
+      if (state.history[0]) renderChoice(state.history[0], true);
+      drawBtn.disabled = false;
+    })
+    .catch(showLoadError);
 })();

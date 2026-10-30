@@ -153,6 +153,14 @@
         font-size: 15px;
       }
 
+      .suggest {
+        margin-top: 28px;
+      }
+
+      .suggest a {
+        color: var(--ink);
+      }
+
       .board {
         margin-top: 64px;
       }
@@ -244,7 +252,7 @@
           <p id="also" class="also" hidden></p>
         </div>
         <div class="actions">
-          <button type="button" id="draw">Draw</button>
+          <button type="button" id="draw" disabled>Draw</button>
           <a id="order" class="order" hidden target="_blank" rel="noopener noreferrer">Order on Uber Eats</a>
         </div>
         <p id="history" class="history"></p>
@@ -259,6 +267,11 @@
           <p class="hint">No fixed restaurant. The draw picks the cuisine and opens Uber Eats.</p>
           <p id="occasional"></p>
         </div>
+        <p class="hint suggest">
+          <a href="https://github.com/prahaladhchandrahasan/declas-downton-sf-food-picks/blob/main/README.md#suggest-a-restaurant"
+            >Suggest a restaurant</a
+          >
+        </p>
       </section>
     </div>
     <script src="picker.js"></script>
