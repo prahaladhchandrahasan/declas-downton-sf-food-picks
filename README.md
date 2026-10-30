@@ -43,4 +43,4 @@ Under `occasional`, there is no fixed restaurant. Those cuisines come up less of
 
 ## Approval
 
-A restaurant is merged only after the Decla team has tried it and approves the pull request. `main` requires that approving review. Do not merge your own suggestion.
+A restaurant is merged only after the Decla team has tried it and approves the pull request.
