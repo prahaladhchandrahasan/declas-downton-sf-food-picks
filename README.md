@@ -2,7 +2,7 @@
 
 Draws a cuisine, then a restaurant, and opens Uber Eats.
 
-https://prahaladhchandrahasan.github.io/declas-downton-sf-food-picks/
+Deployed site: https://prahaladhchandrahasan.github.io/declas-downton-sf-food-picks/
 
 ## Suggest a restaurant
 
