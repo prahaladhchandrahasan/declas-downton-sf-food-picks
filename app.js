@@ -4,49 +4,18 @@
   const alsoEl = document.querySelector("#also");
   const drawBtn = document.querySelector("#draw");
   const orderEl = document.querySelector("#order");
-  const historyEl = document.querySelector("#history");
   const regularEl = document.querySelector("#regular");
   const occasionalEl = document.querySelector("#occasional");
   const statusEl = document.querySelector("#status");
   const resultEl = document.querySelector("#result");
-  const storageKey = "lunch-jar-v1";
 
-  function todayKey() {
-    const now = new Date();
-    const month = String(now.getMonth() + 1).padStart(2, "0");
-    const day = String(now.getDate()).padStart(2, "0");
-    return `${now.getFullYear()}-${month}-${day}`;
-  }
-
-  function loadState() {
-    const today = todayKey();
-    const empty = { day: today, recent: [], history: [] };
-    try {
-      const saved = JSON.parse(localStorage.getItem(storageKey) || "null");
-      if (
-        saved &&
-        saved.day === today &&
-        Array.isArray(saved.recent) &&
-        Array.isArray(saved.history)
-      ) {
-        return saved;
-      }
-    } catch {
-      return empty;
-    }
-    return empty;
-  }
-
-  let state = loadState();
   let spinning = false;
   let picker = null;
 
-  function save() {
-    try {
-      localStorage.setItem(storageKey, JSON.stringify(state));
-    } catch {
-      return;
-    }
+  try {
+    localStorage.removeItem("lunch-jar-v1");
+  } catch {
+    // Storage can be blocked. The earlier-today list is already unused.
   }
 
   function eatsUrl(query) {
@@ -81,12 +50,6 @@
       statusEl.textContent = `${choice.cuisine}. ${title}.`;
       drawBtn.textContent = "Draw again";
     }
-  }
-
-  function renderHistory() {
-    const past = state.history.slice(1, 5);
-    historyEl.textContent =
-      past.length === 0 ? "" : `Earlier today: ${past.map((item) => headline(item)).join(" · ")}`;
   }
 
   function wait(ms) {
@@ -153,12 +116,8 @@
     spinning = true;
     drawBtn.disabled = true;
     drawBtn.textContent = "Drawing";
-    const choice = picker.pick(Math.random, state.recent);
+    const choice = picker.pick(Math.random, []);
     await spinTo(choice);
-    state.recent = [...state.recent, choice.key].slice(-3);
-    state.history = [choice, ...state.history.filter((item) => item.key !== choice.key)].slice(0, 6);
-    save();
-    renderHistory();
     spinning = false;
     drawBtn.disabled = false;
   }
@@ -190,8 +149,6 @@
     .then((data) => {
       picker = globalThis.LunchPicker.create(data);
       renderBoard();
-      renderHistory();
-      if (state.history[0]) renderChoice(state.history[0], true);
       drawBtn.disabled = false;
     })
     .catch(showLoadError);

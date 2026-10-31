@@ -87,8 +87,7 @@
 
       .meta,
       .also,
-      .hint,
-      .history {
+      .hint {
         margin: 0;
         color: var(--muted);
       }
@@ -145,12 +144,6 @@
       :focus-visible {
         outline: 2px solid var(--red);
         outline-offset: 3px;
-      }
-
-      .history {
-        min-height: 1.4em;
-        margin-top: 22px;
-        font-size: 15px;
       }
 
       .suggest {
@@ -270,7 +263,6 @@
           <button type="button" id="draw" disabled>Draw</button>
           <a id="order" class="order" hidden target="_blank" rel="noopener noreferrer">Order on Uber Eats</a>
         </div>
-        <p id="history" class="history"></p>
         <p id="status" class="sr-only" aria-live="polite"></p>
       </main>
       <section class="board" aria-labelledby="how-title">
