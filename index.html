@@ -7,7 +7,6 @@
     <meta name="theme-color" content="#efeae1" />
     <title>Decla's Downton SF food picks</title>
     <meta name="description" content="Decla's Downton SF food picks. Draws a cuisine, then a restaurant, and opens Uber Eats." />
-    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -56,6 +55,11 @@
         font-weight: 560;
         letter-spacing: -0.03em;
         line-height: 1.05;
+      }
+
+      .title a {
+        color: inherit;
+        text-underline-offset: 0.12em;
       }
 
       .title::after {
@@ -253,7 +257,7 @@
   <body>
     <div class="wrap">
       <main>
-        <h1 class="title">Decla's Downton SF food picks</h1>
+        <h1 class="title"><a href="https://decla.com">Decla</a>'s Downton SF food picks</h1>
         <div id="result">
           <p id="place">What's lunch?</p>
           <p id="meta" class="meta">Draws a cuisine, then a restaurant.</p>
