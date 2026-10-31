@@ -44,7 +44,11 @@
     {
       "cuisine": "Thai",
       "restaurants": [{ "name": "Lers Ros", "uberEatsSearch": "Lers Ros Thai San Francisco" }]
+    },
+    {
+      "cuisine": "Burgers",
+      "restaurants": ["Roam Artisan Burgers"]
     }
   ],
-  "occasional": ["Ethiopian", "Japanese", "Chinese", "Burgers", "Pizza", "Peruvian", "Seafood"]
+  "occasional": ["Ethiopian", "Japanese", "Chinese", "Pizza", "Peruvian", "Seafood"]
 }
