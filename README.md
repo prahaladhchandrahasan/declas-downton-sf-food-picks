@@ -4,6 +4,11 @@ Draws a cuisine, then a restaurant, and opens Uber Eats.
 
 Deployed site: https://prahaladhchandrahasan.github.io/declas-downton-sf-food-picks/
 
+## How it works
+
+1. Even draw from the regular cuisines.
+2. Once a cuisine is chosen, one restaurant from that list is drawn at random.
+
 ## Suggest a restaurant
 
 Edit [`restaurants.json`](restaurants.json) and open a pull request. That is the only file to change. Leave `picker.js` and `app.js` alone.

@@ -179,6 +179,17 @@
         max-width: 38rem;
       }
 
+      .steps {
+        margin: 12px 0 0;
+        padding-left: 1.25rem;
+        max-width: 38rem;
+        color: var(--muted);
+      }
+
+      .steps li + li {
+        margin-top: 6px;
+      }
+
       .group {
         display: grid;
         grid-template-columns: 9.5rem 1fr;
@@ -193,6 +204,10 @@
       }
 
       .extra {
+        margin-top: 36px;
+      }
+
+      .board h2.list-title {
         margin-top: 36px;
       }
 
@@ -258,9 +273,13 @@
         <p id="history" class="history"></p>
         <p id="status" class="sr-only" aria-live="polite"></p>
       </main>
-      <section class="board" aria-labelledby="board-title">
-        <h2 id="board-title">The list</h2>
-        <p class="hint">Regular cuisines are an even draw. Then one restaurant from that list.</p>
+      <section class="board" aria-labelledby="how-title">
+        <h2 id="how-title">How it works</h2>
+        <ol class="steps">
+          <li>Even draw from the regular cuisines.</li>
+          <li>Once a cuisine is chosen, one restaurant from that list is drawn at random.</li>
+        </ol>
+        <h2 id="board-title" class="list-title">The list</h2>
         <div id="regular"></div>
         <div class="extra">
           <h2>Less often</h2>
